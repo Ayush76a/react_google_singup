@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+1) using package k/a "@react-oauth/google"
+2) Install this on frontend 
+3) Create a account on "cloud.google.com", create a new projcet and set up apis and domains and javascript origins(localhost)
+4) Create a new client id and client secret and add it to your frontend code(or env file)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+5) working with npm package of @react-auth/google
+   1)  install the package
+   2)  wrap all the compoenets of index.js in "GoogleAuthProvider" and give it the clientId ad props
+   3)  copy and return the "sign In with Google code" in signup component where u want to add button of google Signup
+   4)  the above code will create a Button to singup with google
+   5)  now if singup using the account is successfull a data with user "credentials" will be there
+   6)  seeing the data u can't recognize the user_name and email who has just signed up
+   7)  The property of "Credential" in "credentialResponse" contains all info in Encrypted form
+   8)  Need to decrypt "credentials" to get the user data.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+6) Decrypting User credentials to get user data with JWT_DECODE
+   1)  install 'jwt-decode' pacakage from npm
+   2)  import the 'jwtDecode()' from jwt-decode
+   3)  using the function decode the credentials as 
+       const decoded_user_data = jwtDecode(credentialResponse.credential);
+   4)  now the "decoded_user_data" will contain the user data in plain text form
+   5)  do the required processing with this data 
